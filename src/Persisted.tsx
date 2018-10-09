@@ -1,14 +1,17 @@
 import React from 'react'
 
-export class Persist extends React.Component<{
+export class Persist<T = any> extends React.Component<{
   stateKey: string
-  defaultState: any
-  children: (state: any, update: (oldState: any) => any) => React.ReactNode
+  defaultState: T
+  children: (
+    state: T,
+    update: (f: (oldState: T) => T) => void
+  ) => React.ReactNode
 }> {
   state = {
     data: this.getInitialData()
   }
-  getInitialData() {
+  getInitialData(): T {
     const stateKey = this.props.stateKey
     if (stateKey in localStorage) {
       try {

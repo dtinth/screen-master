@@ -1,17 +1,17 @@
 import React from 'react'
 import { Projector } from './Projector'
-import { Persist } from './Persist'
+import { Persisted } from './Persisted'
 
 export class Editor extends React.Component {
   render() {
     return (
-      <Persist stateKey="counter" defaultState={0}>
+      <Persisted<number> stateKey="counter" defaultState={0}>
         {(counter, update) => (
           <div>
             Counter = {counter}
             <br />
-            <button onClick={() => update((c: number) => c - 1)}>-</button>
-            <button onClick={() => update((c: number) => c + 1)}>+</button>
+            <button onClick={() => update(c => c - 1)}>-</button>
+            <button onClick={() => update(c => c + 1)}>+</button>
             <Projector screenId="screen1" width={1280} height={720}>
               <div
                 onClick={() => {}}
@@ -31,7 +31,7 @@ export class Editor extends React.Component {
             </Projector>
           </div>
         )}
-      </Persist>
+      </Persisted>
     )
   }
 }

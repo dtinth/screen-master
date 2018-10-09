@@ -1771,6 +1771,10 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
+enable-hot-reload@^1.0.0-3:
+  version "1.0.0-3"
+  resolved "https://registry.yarnpkg.com/enable-hot-reload/-/enable-hot-reload-1.0.0-3.tgz#a5ea4f9973fe48a893d9e33ecf44a5d9f40968a4"
+
 encodeurl@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/encodeurl/-/encodeurl-1.0.2.tgz#ad3ff4c86ec2d029322f5a02c3a9a606c95b3f59"

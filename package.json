@@ -16,6 +16,7 @@
     "build": "parcel build src/index.html"
   },
   "dependencies": {
+    "enable-hot-reload": "^1.0.0-3",
     "fiery": "^0.2.0-3",
     "firebase": "^5.5.3",
     "react-router-dom": "^4.3.1",
