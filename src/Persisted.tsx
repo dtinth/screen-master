@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class Persist<T = any> extends React.Component<{
+export class Persisted<T = any> extends React.Component<{
   stateKey: string
   defaultState: T
   children: (
@@ -24,7 +24,9 @@ export class Persist<T = any> extends React.Component<{
   }
   render() {
     return this.props.children(this.state.data, f => {
-      const json = JSON.stringify(f(this.state.data))
+      const json = JSON.stringify(
+        f(JSON.parse(JSON.stringify(this.state.data)))
+      )
       const nextData = JSON.parse(json)
       const stateKey = this.props.stateKey
       localStorage[stateKey] = json
