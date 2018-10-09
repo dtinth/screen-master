@@ -20,7 +20,8 @@ export class Projector extends React.Component<
           height: props.height,
           position: 'relative',
           background: '#000',
-          color: '#fff'
+          color: '#fff',
+          overflow: 'hidden'
         }}
       >
         {props.children}
@@ -60,15 +61,18 @@ export class Projector extends React.Component<
       this.props.screenId
     ].join('')
     return (
-      <div style={{ background: '#333' }}>
+      <div style={{ background: '#111' }}>
         Preview:
+        <br />
         <div
           style={{
-            zoom: 0.25,
+            display: 'inline-block',
             border: '8px solid #333'
           }}
         >
-          {toElement(JSON.parse(this.state.json))}
+          <div style={{ zoom: 0.5 }}>
+            {toElement(JSON.parse(this.state.json))}
+          </div>
         </div>
         <br />
         {url}
