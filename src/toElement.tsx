@@ -5,7 +5,10 @@ export function toElement(item: any) {
   }
   return React.createElement(
     item.type,
-    item.props,
+    {
+      ...item.props,
+      ...(item.props['data-key'] ? { key: item.props['data-key'] } : {})
+    },
     ...item.children.map(toElement)
   )
 }
