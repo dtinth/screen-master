@@ -6,7 +6,7 @@ import { ErrorBox } from './ErrorBox'
 import { LoadingIndicator } from './LoadingIndicator'
 import { ScreenMasterLayout } from './ScreenMasterLayout'
 import { Location, History } from 'history'
-import { PresentationModuleContext } from './context'
+import { PresentationContext } from './context'
 import { AuthenticationRequired } from './AuthenticationRequired'
 import * as NProgress from 'nprogress'
 
@@ -44,9 +44,9 @@ export class ScreenRoute extends React.Component<{
                   screen={
                     <ErrorBoundary>
                       {() => (
-                        <PresentationModuleContext.Consumer>
+                        <PresentationContext.Consumer>
                           {m => m.display(screenData && screenData.state)}
-                        </PresentationModuleContext.Consumer>
+                        </PresentationContext.Consumer>
                       )}
                     </ErrorBoundary>
                   }
@@ -55,14 +55,14 @@ export class ScreenRoute extends React.Component<{
                       {user => (
                         <ErrorBoundary>
                           {() => (
-                            <PresentationModuleContext.Consumer>
+                            <PresentationContext.Consumer>
                               {m =>
                                 m.controller(
                                   screenData && screenData.state,
                                   this.update
                                 )
                               }
-                            </PresentationModuleContext.Consumer>
+                            </PresentationContext.Consumer>
                           )}
                         </ErrorBoundary>
                       )}

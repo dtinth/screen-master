@@ -1,24 +1,24 @@
-import { PresentationModuleContext, PresentationModule } from './core'
+import { PresentationContext, IPresentation } from './core'
 import React from 'react'
 
 let instance: PresentationContextProvider
 
 export class PresentationContextProvider extends React.Component<
   {},
-  { presentation: PresentationModule }
+  { presentation: IPresentation }
 > {
   constructor(props: any) {
     super(props)
-    this.state = { presentation: require('./presentation') }
+    this.state = { presentation: require('./presentation').presentation }
   }
   componentDidMount() {
     instance = this
   }
   render() {
     return (
-      <PresentationModuleContext.Provider value={this.state.presentation}>
+      <PresentationContext.Provider value={this.state.presentation}>
         {this.props.children}
-      </PresentationModuleContext.Provider>
+      </PresentationContext.Provider>
     )
   }
 }
@@ -31,7 +31,7 @@ if (hot) {
       instance = hot.data.instance
     }
     if (instance) {
-      const nextModule = require('./presentation')
+      const nextModule = require('./presentation').presentation
       instance.setState({ presentation: nextModule })
     }
   })

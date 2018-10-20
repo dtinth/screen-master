@@ -1,7 +1,4 @@
 import { createContext } from 'react'
-import { PresentationModule } from './types'
-import React from 'react'
+import { IPresentation } from './types'
 
-export const PresentationModuleContext = createContext<PresentationModule>(
-  {} as any
-)
+export const PresentationContext = createContext<IPresentation>({} as any)
