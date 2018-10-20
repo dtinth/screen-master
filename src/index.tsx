@@ -1,33 +1,19 @@
 import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { HashRouter, Switch, Route, Link } from 'react-router-dom'
-import { ScreenRoute } from './ScreenRoute'
-import { EditorRoute } from './EditorRoute'
-import { HomeRoute } from './HomeRoute'
+import { PresentationContextProvider } from './PresentationContextProvider'
+import { App } from './core'
+import 'nprogress/nprogress.css'
 
-const element = (
-  <HashRouter>
-    <div>
-      <Switch>
-        <Route
-          exact
-          path="/screens/:userId/:screenId"
-          component={ScreenRoute}
-        />
-        <Route exact path="/editor" component={EditorRoute} />
-        <Route exact path="/" component={HomeRoute} />
-        <Route
-          render={() => (
-            <div>
-              <h1>404</h1>
-              <Link to="/">Go to home...</Link>
-            </div>
-          )}
-        />
-      </Switch>
-    </div>
-  </HashRouter>
+ReactDOM.render(
+  <PresentationContextProvider>
+    <App />
+  </PresentationContextProvider>,
+  document.getElementById('root')
 )
 
-ReactDOM.render(element, document.getElementById('root'))
+const hot = (module as any).hot
+
+if (hot) {
+  hot.accept(() => {})
+}

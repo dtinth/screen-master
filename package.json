@@ -16,9 +16,11 @@
     "build": "parcel build src/index.html"
   },
   "dependencies": {
+    "@types/nprogress": "^0.0.29",
     "enable-hot-reload": "^1.0.0-3",
     "fiery": "^0.2.0-3",
     "firebase": "^5.5.3",
+    "nprogress": "^0.2.0",
     "react-router-dom": "^4.3.1",
     "react-test-renderer": "^16.5.2"
   }

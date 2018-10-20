@@ -9,9 +9,14 @@ export class HomeRoute extends React.Component {
       <div>
         <h1>screen-master</h1>
         <p>
-          <strong>screen-master</strong> is a presentation tool for hackers.
+          <strong>screen-master</strong> is a hackable live presentation
+          software. Learn more on the{' '}
+          <a target="_blank" href="https://github.com/dtinth/screen-master">
+            project’s website
+          </a>
+          .
         </p>
-        <AuthenticationRequired>{user => <Home />}</AuthenticationRequired>
+        <AuthenticationRequired>{() => <Home />}</AuthenticationRequired>
       </div>
     )
   }
@@ -24,7 +29,10 @@ class Home extends React.Component {
       <div>
         <p>
           Hello, {currentUser.displayName}! You can now enter the{' '}
-          <Link to="/editor">editor</Link>.
+          <Link to={'/screens/' + currentUser.uid + '/main?controller'}>
+            screen controller
+          </Link>
+          .
         </p>
         <p>
           <button onClick={() => firebase.auth().signOut()}>Sign out</button>

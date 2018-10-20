@@ -2,6 +2,8 @@ import React, { ReactNode } from 'react'
 import * as fiery from 'fiery'
 import { firebase } from './firebase'
 import { ErrorBox } from './ErrorBox'
+import { LoadingIndicator } from './LoadingIndicator'
+import { Box } from './Box'
 
 export class AuthenticationRequired extends React.Component<{
   children: (user: firebase.User) => ReactNode
@@ -11,19 +13,21 @@ export class AuthenticationRequired extends React.Component<{
       <fiery.Auth>
         {authState =>
           fiery.unwrap(authState, {
-            loading: () => <div>Loading authentication state...</div>,
+            loading: () => (
+              <LoadingIndicator title="Checking authentication state..." />
+            ),
             error: (error, retry) => <ErrorBox error={error} retry={retry} />,
             completed: user => {
               if (user) {
                 return this.props.children(user)
               } else {
                 return (
-                  <div>
-                    You must sign in to continue:{' '}
+                  <Box borderColor="#a95">
+                    You must sign in to continue…{' '}
                     <button onClick={authenticateWithGitHub}>
                       Sign in with GitHub
                     </button>
-                  </div>
+                  </Box>
                 )
               }
             }
