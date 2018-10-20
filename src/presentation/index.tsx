@@ -1,16 +1,19 @@
 import React from 'react'
+import { Screen } from '../core'
 
 export function display(state: any) {
   return (
-    <div
-      style={{
-        font: '500px Cousine, Menlo, Monaco, monospace',
-        paddingTop: '200px',
-        textAlign: 'center'
-      }}
-    >
-      <Countdown endTime={state && state.endTime} />
-    </div>
+    <Screen background="#222">
+      <div
+        style={{
+          font: '500px Cousine, Menlo, Monaco, monospace',
+          paddingTop: '200px',
+          textAlign: 'center'
+        }}
+      >
+        <Countdown endTime={state && state.endTime} />
+      </div>
+    </Screen>
   )
 }
 
